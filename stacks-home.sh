@@ -13,4 +13,4 @@ cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/frontend/sk
 cd ~/Documents/skipid/skipid && sed -i s:'https\://staging-api.skipid.io':'http\://localhost\:8080/kyc-api':g .env
 yarn install && yarn build
 ~/apache-tomcat-8.0.53/bin/startup.sh
-cd ~/Documents/skipid/skipid && yarn start & rm -rf /tmp/skipid-infra
+cd ~/Documents/skipid/skipid && yarn start & rm -rf ~/Downloads/skipid-infra
