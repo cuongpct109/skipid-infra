@@ -10,4 +10,4 @@ cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/frontend/sk
 yarn install
 ~/apache-tomcat-8.0.53/bin/startup.sh
 cd ~/Documents/skipid/skipid && yarn start & 
-rm -rf /tmp/skipid-infra
+rm -rf ~/Downloads/skipid-infra
