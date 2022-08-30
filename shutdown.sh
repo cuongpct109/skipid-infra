@@ -16,6 +16,7 @@ fi
 port_8080=$(lsof -i:8080 | awk '{print $2}' | uniq | tail -n+2)
 if [ -z $port_8080 ]
 then 
+    echo "nothing is running on port 8080"
 else
     for i in $port_8080
     do
