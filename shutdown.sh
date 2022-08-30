@@ -2,13 +2,13 @@
 
 # Kill processes which using 3000 port
 
-for i in $(lsof -i:3000 | awk '{print $2}' | uniq | tail -n+2 |)
+for i in $(lsof -i:3000 | awk '{print $2}' | uniq | tail -n+2)
 do
 kill -9 $i 
 done
 
 # Kill processes which using 8080 port
-for i in $(lsof -i:8080 | awk '{print $2}' | uniq | tail -n+2 | tr '\n' ' ')
+for i in $(lsof -i:8080 | awk '{print $2}' | uniq | tail -n+2)
 do
 kill -9 $i 
 done
