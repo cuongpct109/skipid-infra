@@ -18,7 +18,7 @@ mysql=$(sudo docker ps | grep "mysql" | awk '{ print $1 }' | uniq)
 
 if [ -z "$mysql" ]
 then
-    echo "docker mysql container is not running"
+    echo "mysql container is not running"
 else
     for i in $mysql
     do
