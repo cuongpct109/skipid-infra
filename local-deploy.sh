@@ -72,6 +72,7 @@ sudo apt update;
 # download apache-tomcat-8.0.53 and apache-ant-1.9.16
 cd ~ && wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53.zip && unzip -o apache-tomcat-8.0.53.zip && rm apache-tomcat-8.0.53.zip && chmod +x ~/apache-tomcat-8.0.53/bin/catalina.sh ~/apache-tomcat-8.0.53/bin/startup.sh ~/apache-tomcat-8.0.53/bin/shutdown.sh
 cd ~ && wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.9.16-bin.zip && unzip -o apache-ant-1.9.16-bin.zip && rm apache-ant-1.9.16-bin.zip && chmod +x ~/apache-ant-1.9.16/bin/ant ~/apache-ant-1.9.16/bin/antRun
+cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 && <echo into .bashrc>
 
 # clone common and kyc-api source
 mkdir ~/Documents/skipid && cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/backend/common.git && git clone https://gitlab.com/ultorex/skipid/backend/kyc-api.git 
