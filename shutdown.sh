@@ -4,6 +4,7 @@
 port_3000=$(lsof -i:3000 | awk '{print $2}' | uniq | tail -n+2)
 if [ -z $port_3000 ]
 then 
+    echo "nothing is running on port 3000"
 else
     for i in $port_3000
     do
