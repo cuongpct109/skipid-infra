@@ -77,7 +77,7 @@ else
 fi
 
 # download datastack from https://drive.google.com/drive/u/0/folders/17i0jINA19m9PZ1u292Tht5lm5sZIWhcm, if the file change, just need to replace different file'ID
-wget --load-cookies ~/Downloads/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies ~/Downloads/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1BodY1ghZjTjOgsrCeq9JARoS-kOA_ejZ' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1BodY1ghZjTjOgsrCeq9JARoS-kOA_ejZ" -O ~/Downloads/datastack.tar.gz && rm ~/Downloads/cookies.txt
+wget --load-cookies ~/Downloads/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies ~/Downloads/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1tJJiMOaYtmzSskWq1EGgCOmR6J3VZFqs' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1tJJiMOaYtmzSskWq1EGgCOmR6J3VZFqs" -O ~/Downloads/datastack.tar.gz && rm ~/Downloads/cookies.txt
 
 # unzip datastack.tar.gz
 cd ~/Downloads && tar -xvf datastack.tar.gz && git clone https://gitlab.com/ultorex/skipid/backend/dbs.git ~/Documents/dbs && rsync -a ~/Downloads/DataStack/ ~/Documents/dbs/
