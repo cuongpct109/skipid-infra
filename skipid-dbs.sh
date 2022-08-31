@@ -82,7 +82,8 @@ wget --load-cookies ~/Downloads/cookies.txt "https://docs.google.com/uc?export=d
 # unzip datastack.tar.gz
 cd ~/Downloads && tar -xvf datastack.tar.gz && git clone https://gitlab.com/ultorex/skipid/backend/dbs.git ~/Documents/dbs && rsync -a ~/Downloads/DataStack/ ~/Documents/dbs/
 
-# run docker-compose and save lock to ~/Docu
+# run docker-compose and save logs to ~/Documents/dbs/docker.log
+
 docker-compose -f ~/Documents/dbs/docker-compose.yml up > ~/Documents/dbs/docker.log 2>&1 &
 
 sudo apt autoremove; 
