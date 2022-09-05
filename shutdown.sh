@@ -97,3 +97,75 @@ removeImage $(getImageID redis latest)
 removeImage $(getImageID mysql 5.7)
 removeImage $(getImageID mongo 4.4)
 
+if [ -d ~/Documents/skipid ]    
+then
+    rm -rf ~/Documents/skipid
+    echo "~/Documents/skipid removed"
+else
+    :
+fi
+
+if [ -d ~/Documents/dbs ]    
+then
+    rm -rf ~/Documents/dbs
+    echo "~/Documents/dbs removed"
+else
+    :
+fi
+
+if [ -d ~/apache-tomcat-8.0.53 ]    
+then
+    rm -rf ~/apache-tomcat-8.0.53
+    echo "~/apache-tomcat-8.0.53 removed"
+else
+    :
+fi
+
+if [ -d ~/apache-ant-1.9.16 ]    
+then
+    rm -rf ~/apache-ant-1.9.16
+    echo "~/apache-ant-1.9.16 removed"
+else
+    :
+fi
+
+if [ -d ~/java1.8-272 ]    
+then
+    rm -rf ~/java1.8-272
+    echo "~/java1.8-272 removed"
+else
+    :
+fi
+
+if [ -f ~/Documents/utilities/.env ]
+then
+    rm -rf ~/Documents/utilities/.env
+    echo "~/Documents/utilities/.env removed"
+else 
+    :
+fi
+
+if [ -f ~/apache-tomcat-8.0.53.zip ]
+then
+    rm -rf ~/apache-tomcat-8.0.53.zip*
+    echo "~/apache-tomcat-8.0.53.zip removed"
+else 
+    :
+fi
+
+if [ -f ~/apache-ant-1.9.16-bin.zip ]
+then
+    rm -rf ~/apache-ant-1.9.16-bin.zip*
+    echo "~/apache-ant-1.9.16-bin.zip removed"
+else 
+    :
+fi
+
+
+if [ -f ~/openlogic-openjdk-8u272-b10-linux-x64.tar.gz ]
+then
+    rm -rf ~/openlogic-openjdk-8u272-b10-linux-x64.tar.gz*
+    echo "~/apache-ant-1.9.16-bin.zip removed"
+else 
+    :
+fi
