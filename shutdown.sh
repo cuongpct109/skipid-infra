@@ -9,7 +9,7 @@ then
 else
     for i in $(echo $port_3000 | sed "s/,/ /g")  
     do
-        kill -9 $i 
+        kill -9 $i > /dev/null
         echo "killing process (ID=$i) with port 3000"
         echo "==============================="
     done
@@ -25,7 +25,7 @@ then
 else
     for i in $(echo $port_8080 | sed "s/,/ /g")  
     do
-        kill -9 $i
+        kill -9 $i > /dev/null
         echo "killing process (ID=$i) with port 8080"
         echo "==============================="
     done
