@@ -155,8 +155,8 @@ cd ~/Documents/skipid/kyc-admin && ~/apache-ant-1.9.16/bin/ant && cd ~/Documents
 cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/frontend/skipid.git && cd ~/Documents/skipid/skipid && touch .env && cp /home/cuong/Documents/utilities/.env ~/Documents/skipid/skipid/
 cd ~/Documents/skipid/skipid && sed -i s:'https\://staging-api.skipid.io':'http\://localhost\:8080/kyc-api':g .env
 
-# Install and build skipid frontend with yarn
-yarn install && yarn build
+# Install skipid frontend with yarn
+yarn install
 
 # Start tomcat server at port 8080
 ~/apache-tomcat-8.0.53/bin/startup.sh
