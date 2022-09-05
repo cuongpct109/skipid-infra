@@ -1,6 +1,11 @@
 #!/bin/sh
 
+# Create .env file in ~/Documents/utilities/ folder
+
+echo "NODE_ENV=production\nREACT_APP_API_URI=https://staging-api.skipid.io\nREACT_APP_REACT_QUERY_DEVTOOLS=false\nREACT_APP_AUTH0_DOMAIN=auth.skipid.org\nREACT_APP_AUTH0_CLIENT_ID=rVgg324pRjwrtiF8FGOQYcsg4zKOyacn\nREACT_APP_AUTH0_CLIENT_AUDIENCE=https://skipid.net\nREACT_APP_AUTH0_CLIENT_AUDIENCE_MFA=https://dev-hvhnhg1u.us.auth0.com/mfa/\nREACT_APP_ULTOREX_URL=https://ultorex.org\nREACT_APP_SENTRY_DSN=https://865c108123e74465aa2bf6412b10b942@o1009406.ingest.sentry.io/6025507" > ~/Documents/utilities/.env
+
 # Kill processes which using 3000 port
+
 port_3000=$(lsof -i:3000 | awk '{print $2}' | uniq | tail -n+2)
 if [ -z $port_3000 ]             
 then
@@ -17,6 +22,7 @@ fi
 
 
 # Kill processes which using 8080 port
+
 port_8080=$(lsof -i:8080 | awk '{print $2}' | uniq | tail -n+2)
 if [ -z $port_8080 ]             
 then
@@ -72,9 +78,11 @@ else
 fi
 
 # Update
+
 sudo apt update;
 
 # Download apache-tomcat-8.0.53 and apache-ant-1.9.16
+
 cd ~ && wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.53/bin/apache-tomcat-8.0.53.zip && unzip -o apache-tomcat-8.0.53.zip && rm apache-tomcat-8.0.53.zip && chmod +x ~/apache-tomcat-8.0.53/bin/catalina.sh ~/apache-tomcat-8.0.53/bin/startup.sh ~/apache-tomcat-8.0.53/bin/shutdown.sh
 cd ~ && wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.9.16-bin.zip && unzip -o apache-ant-1.9.16-bin.zip && rm apache-ant-1.9.16-bin.zip && chmod +x ~/apache-ant-1.9.16/bin/ant ~/apache-ant-1.9.16/bin/antRun
 
@@ -142,33 +150,42 @@ fi
 
 
 # Clone common and kyc-api source
+
 mkdir ~/Documents/skipid 
 cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/backend/common.git && git clone https://gitlab.com/ultorex/skipid/backend/kyc-api.git 
 
-
 # Build kyc-api with gradlew then move file war into webapps folder of tomcat-8.0.53
+
 cd ~/Documents/skipid/kyc-api && ./gradlew build && cd ~/Documents/skipid/kyc-api/build/libs && mv kyc-api-0.0.1-SNAPSHOT.war ~/apache-tomcat-8.0.53/webapps/ && mv ~/apache-tomcat-8.0.53/webapps/kyc-api-0.0.1-SNAPSHOT.war ~/apache-tomcat-8.0.53/webapps/kyc-api.war
 
 # Clone kyc-admin source
+
 cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/backend/kyc-admin.git 
 
 
 # Build kyc-admin with ant then move war file to webapps folder of tomcat-8.0.53
+
 cd ~/Documents/skipid/kyc-admin && ~/apache-ant-1.9.16/bin/ant && cd ~/Documents/skipid/kyc-admin/dist && mv hibtc-back.war ~/apache-tomcat-8.0.53/webapps/
 
 # Clone skipid frontend and copy .env (previously add to ~/Documents/utilities folder) to skipid frontend base folder 
+
 cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/frontend/skipid.git && cd ~/Documents/skipid/skipid && touch .env && cp /home/cuong/Documents/utilities/.env ~/Documents/skipid/skipid/
 
 # Install skipid frontend with yarn
+
 yarn install
 sudo yarn global add serve
+
 # Start tomcat server at port 8080
+
 ~/apache-tomcat-8.0.53/bin/startup.sh
 
 # Start skipid frontend server at port 3000
+
 cd ~/Documents/skipid/skipid 
 yarn build
 serve -s build -p 3000 &
 
 # Remove .env file in the utilities folder
+
 rm -rf ~/Documents/utilities/.env
