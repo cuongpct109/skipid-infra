@@ -1,27 +1,70 @@
 #!/bin/sh
 
-# Check and remove all running containers if needed 
+# Check and remove relevant containers if needed
+# getContainerID <CONTAINER-NAME> <PORT>. Ex: getContainerID redis 6379
+# removeContainer <CONTAINER-ID>. Ex: removeContainer $(getContainerID redis 6379)
 
-if [ -z "$(docker ps | awk '{ print $1 }' | tail -n+2)" ]
-then
-      :
-else
-      docker stop $(docker ps | awk '{ print $1 }' | tail -n+2) 
-      docker rm  $(docker ps -q -a)
-      echo "These docker containers above have been stopped and removed"
-fi
+getContainerID () {
+      if [ -z $( docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a| tail -n+2 | grep $1 | 
+                if [ -z "$2" ]
+                then awk '{ print $1 }'
+                else grep -w "$2" | awk '{ print $1 }'
+                fi
+                ) ]
+      then 
+            docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a| tail -n+2 | grep $1 | 
+                if [ -z "$2" ]
+                then awk '{ print $1 }'
+                else grep -w "$2" | awk '{ print $1 }'
+                fi
+      else 
+            docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a| tail -n+2 | grep $1 |  awk '{ print $1 }'
+    fi
+}
+
+
+removeContainer () {                                                             
+      export containerID=$1
+      if [ -z "$containerID" ]
+      then
+            :
+      else
+            sudo docker stop "$containerID"
+            sudo docker rm "$containerID"
+      fi
+}
+
+removeContainer $(getContainerID redis 6379)                                     
+removeContainer $(getContainerID mysql 3306)
+removeContainer $(getContainerID mongo 27017)
+
+
 
 # Check and remove relevant images if needed
+# getImageID <REPOSITORY-NAME> <TAG>. Ex: getImageID redis latest
+# removeImage <IMAGE-ID>. Ex: removeImage $(getImageID redis latest)
 
-if [ -z "$(docker images | awk '{ print $3 }' | tail -n+2)" ]
-then
-      :
-else
-      docker rmi $(docker images | awk '{ print $3 }' | tail -n+2) 
-      echo "These docker images above have been stopped"
-fi
+getImageID () {
+      docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 | 
+                if [ -z "$2" ]
+                then awk '{ print $1 }'
+                else grep -w "$2" | awk '{ print $1 }'
+                fi
+}
 
+removeImage () {                                                             
+      export imageID=$1
+      if [ -z "$imageID" ]
+      then
+            :
+      else
+            sudo docker rmi "$imageID"
+      fi
+}
 
+removeImage $(getImageID redis latest)                                     
+removeImage $(getImageID mysql 5.7)
+removeImage $(getImageID mongo 4.4)
 
 
 # Check and remove existing old folders if needed
@@ -113,6 +156,8 @@ cd ~/Downloads && tar -xvf datastack.tar.gz && git clone https://gitlab.com/ulto
 # Run docker-compose and save logs to ~/Documents/dbs/docker.log
 
 docker-compose -f ~/Documents/dbs/docker-compose.yml up > ~/Documents/dbs/docker.log 2>&1 &
+
+tail -f ~/Documents/dbs/docker.log
 
 # Cleaning up
 
