@@ -12,14 +12,15 @@ getContainerID () {
                 fi
                 ) ]
       then 
+            docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a| tail -n+2 | grep $1 |  awk '{ print $1 }'
+            
+      else 
             docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a| tail -n+2 | grep $1 | 
                 if [ -z "$2" ]
                 then awk '{ print $1 }'
                 else grep -w "$2" | awk '{ print $1 }'
                 fi
-      else 
-            docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a| tail -n+2 | grep $1 |  awk '{ print $1 }'
-    fi
+      fi
 }
 
 
@@ -45,11 +46,19 @@ removeContainer $(getContainerID mongo 27017)
 # removeImage <IMAGE-ID>. Ex: removeImage $(getImageID redis latest)
 
 getImageID () {
-      docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 | 
+      if [ -z $(docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 |  
                 if [ -z "$2" ]
                 then awk '{ print $1 }'
                 else grep -w "$2" | awk '{ print $1 }'
                 fi
+                ) ]
+      then docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 | awk '{ print $1 }'
+      else docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 |  
+                if [ -z "$2" ]
+                then awk '{ print $1 }'
+                else grep -w "$2" | awk '{ print $1 }'
+                fi
+      fi        
 }
 
 removeImage () {                                                             
