@@ -74,12 +74,27 @@ cd ~ && wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.53/bin/apache-
 cd ~ && wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.9.16-bin.zip && unzip -o apache-ant-1.9.16-bin.zip && rm apache-ant-1.9.16-bin.zip && chmod +x ~/apache-ant-1.9.16/bin/ant ~/apache-ant-1.9.16/bin/antRun
 
 # Check and configure JAVA if needed
-if [ -d "~/java1.8-272" ] 
-then
-    rm -rf ~/java1.8-272
-else
-    cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 && echo "export JAVA_HOME1=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME1/bin\n" >> ~/.bashrc && source ~/.bashrc
+
+if [ "$(echo $0)" = "/bin/bash" ]; then
+    if [ -d ~/java1.8-272 ] 
+    then
+        rm -rf ~/java1.8-272
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 && echo "export JAVA_HOME1=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME1/bin\n" >> ~/.bashrc && source ~/.bashrc
+    else
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 && echo "export JAVA_HOME1=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME1/bin\n" >> ~/.bashrc && source ~/.bashrc
+    fi
 fi
+
+if [ "$(echo $0)" = "/bin/zsh" ]; then
+    if [ -d ~/java1.8-272 ] 
+    then
+        rm -rf ~/java1.8-272
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 && echo "export JAVA_HOME1=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME1/bin\n" >> ~/.zshrc && source ~/.zshrc
+    else
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz && mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 && echo "export JAVA_HOME1=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME1/bin\n" >> ~/.zshrc && source ~/.zshrc
+    fi
+fi
+
 
 # Clone common and kyc-api source
 mkdir ~/Documents/skipid && cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/backend/common.git && git clone https://gitlab.com/ultorex/skipid/backend/kyc-api.git 
