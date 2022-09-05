@@ -164,7 +164,7 @@ yarn install
 cd ~/Documents/skipid/skipid 
 yarn build
 yarn global add serve
-serve -s build &
+serve -s build -p 3000 &
 
 # Remove .env file in the utilities folder
 rm -rf ~/Documents/utilities/.env
