@@ -161,14 +161,13 @@ cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/frontend/sk
 
 # Install skipid frontend with yarn
 yarn install
-
+sudo yarn global add serve
 # Start tomcat server at port 8080
 ~/apache-tomcat-8.0.53/bin/startup.sh
 
 # Start skipid frontend server at port 3000
 cd ~/Documents/skipid/skipid 
 yarn build
-yarn global add serve
 serve -s build -p 3000 &
 
 # Remove .env file in the utilities folder
