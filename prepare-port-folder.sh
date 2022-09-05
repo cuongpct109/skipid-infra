@@ -43,7 +43,7 @@ fi
 
 if [ -d ~/apache-tomcat-8.0.53 ]    
 then
-    rm -rf ~/apache-tomcat-8.0.53
+    rm -rf ~/apache-tomcat-8.0.53*
     echo "~/apache-tomcat-8.0.53 removed"
 else
     :
@@ -51,7 +51,7 @@ fi
 
 if [ -d ~/apache-ant-1.9.16 ]    
 then
-    rm -rf ~/apache-ant-1.9.16
+    rm -rf ~/apache-ant-1.9.16*
     echo "~/apache-ant-1.9.16 removed"
 else
     :
@@ -59,7 +59,7 @@ fi
 
 if [ -f ~/apache-tomcat-8.0.53.zip ]
 then
-    rm -rf ~/apache-tomcat-8.0.53.zip
+    rm -rf ~/apache-tomcat-8.0.53.zip*
     echo "~/apache-tomcat-8.0.53.zip removed"
 else 
     :
@@ -67,7 +67,7 @@ fi
 
 if [ -f ~/apache-ant-1.9.16-bin.zip ]
 then
-    rm -rf ~/apache-ant-1.9.16-bin.zip
+    rm -rf ~/apache-ant-1.9.16-bin.zip*
     echo "~/apache-ant-1.9.16-bin.zip removed"
 else 
     :
