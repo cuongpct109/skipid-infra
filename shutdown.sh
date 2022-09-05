@@ -20,7 +20,7 @@ fi
 port_8080=$(lsof -i:8080 | awk '{print $2}' | uniq | tail -n+2)
 if [ -z $port_8080 ]             
 then
-    echo "nothing is running on port 3000"
+    echo "nothing is running on port 8080"
     echo "==============================="
 else
     for i in $(echo $port_8080 | sed "s/,/ /g")  
@@ -60,7 +60,7 @@ removeContainer () {
       then
             :
       else
-            sudo docker stop "$containerID"
+            sudo docker stop "$containerID" > /dev/null
             sudo docker rm "$containerID"
       fi
 }
@@ -75,25 +75,25 @@ removeContainer $(getContainerID mongo 27017)
 # getImageID <REPOSITORY-NAME> <TAG>. Ex: getImageID redis latest
 # removeImage <IMAGE-ID>. Ex: removeImage $(getImageID redis latest)
 
-getImageID () {
-      docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 | 
-                if [ -z "$2" ]
-                then awk '{ print $1 }'
-                else grep -w "$2" | awk '{ print $1 }'
-                fi
-}
+#getImageID () {
+#      docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 | 
+#                if [ -z "$2" ]
+#                then awk '{ print $1 }'
+#                else grep -w "$2" | awk '{ print $1 }'
+#                fi
+#}
 
-removeImage () {                                                             
-      export imageID=$1
-      if [ -z "$imageID" ]
-      then
-            :
-      else
-            sudo docker rmi "$imageID"
-      fi
-}
+#removeImage () {                                                             
+#      export imageID=$1
+#      if [ -z "$imageID" ]
+#      then
+#            :
+#      else
+#            sudo docker rmi "$imageID"
+#      fi
+#}
 
-removeImage $(getImageID redis latest)                                     
-removeImage $(getImageID mysql 5.7)
-removeImage $(getImageID mongo 4.4)
+#removeImage $(getImageID redis latest)                                     
+#removeImage $(getImageID mysql 5.7)
+#removeImage $(getImageID mongo 4.4)
 
