@@ -169,3 +169,20 @@ then
 else 
     :
 fi
+
+if [ -d ~/Downloads/datastack ]    
+then
+    rm -rf ~/Downloads/datastack
+    echo "~/Downloads/datastack removed"
+else
+    :
+fi
+
+
+if [ -f ~/Downloads/datastack.tar.gz ]
+then
+    rm -rf ~/Downloads/datastack.tar.gz*
+    echo "~/Downloads/datastack.tar.gz removed"
+else 
+    :
+fi
