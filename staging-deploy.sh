@@ -170,7 +170,7 @@ yarn install
 
 # Start tomcat server at port 8080
 ~/apache-tomcat-8.0.53/bin/startup.sh
-tail -f ~/apache-tomcat-8.0.53/logs/catalina.out
+tail -f ~/apache-tomcat-8.0.53/logs/catalina.out &
 
 # Start skipid frontend server at port 3000
 cd ~/Documents/skipid/skipid 
