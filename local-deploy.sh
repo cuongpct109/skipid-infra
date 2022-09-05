@@ -84,17 +84,17 @@ if [ "$(echo $0)" = "/bin/bash" ]; then
     if [ -d ~/java1.8-272 ] 
     then
         rm -rf ~/java1.8-272
-        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz
-        rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz
+        rm openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272 
         echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc 
         source ~/.bashrc
     else
-        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        rm openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
         echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
         source ~/.bashrc
     fi
@@ -104,19 +104,19 @@ if [ "$(echo $0)" = "/bin/sh" ]; then
     if [ -d ~/java1.8-272 ] 
     then
         rm -rf ~/java1.8-272
-        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz
-        rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.profile  
-        source ~/.profile
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz
+        rm openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272 
+        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc 
+        source ~/.bashrc
     else
-        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.profile
-        source ~/.profile
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        rm openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
+        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
+        source ~/.bashrc
     fi
 fi
 
@@ -124,19 +124,19 @@ if [ "$(echo $0)" = "/bin/zsh" ]; then
     if [ -d ~/java1.8-272 ] 
     then
         rm -rf ~/java1.8-272
-        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz
-        tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz
-        rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.zshrc
-        source ~/.zshrc
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz
+        rm openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272 
+        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc 
+        source ~/.bashrc
     else
-        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk-jre/8u272-b10/openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        tar -xvf openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        rm openlogic-openjdk-jre-8u272-b10-linux-x64.tar.gz 
-        mv openlogic-openjdk-jre-8u272-b10-linux-x64 java1.8-272 
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.zshrc
-        source ~/.zshrc
+        cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        rm openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
+        mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
+        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
+        source ~/.bashrc
     fi
 fi
 
