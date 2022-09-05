@@ -14,15 +14,25 @@ if [ "$(echo $0)" = "bash" ]; then
         cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz*
-        mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272 
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc 
+        mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
+        if [ -z $(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH") ] && [ -z $(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export") ];
+        then 
+            echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
+        else
+            :
+        fi
         source ~/.bashrc
     else
         cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz* 
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
+        if [ -z $(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH") ] && [ -z $(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export") ];
+        then 
+            echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
+        else
+            :
+        fi
         source ~/.bashrc
     fi
 fi
@@ -35,14 +45,24 @@ if [ "$(echo $0)" = "sh" ]; then
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz*
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272 
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc 
+        if [ -z $(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH") ] && [ -z $(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export") ];
+        then 
+            echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
+        else
+            :
+        fi 
         source ~/.bashrc
     else
         cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz*
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
+        if [ -z $(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH") ] && [ -z $(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export") ];
+        then 
+            echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
+        else
+            :
+        fi
         source ~/.bashrc
     fi
 fi
@@ -55,14 +75,24 @@ if [ "$(echo $0)" = "zsh" ]; then
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz*
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272 
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.zshrc 
+        if [ -z $(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH") ] && [ -z $(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export") ];
+        then 
+            echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.zshrc
+        else
+            :
+        fi
         source ~/.zshrc
     else
         cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz*
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
-        echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.zshrc
+        if [ -z $(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH") ] && [ -z $(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export") ];
+        then 
+            echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.zshrc
+        else
+            :
+        fi
         source ~/.zshrc
     fi
 fi
