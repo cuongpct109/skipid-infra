@@ -2,7 +2,7 @@
 
 # Check and remove all running containers if needed 
 
-if [ -z "docker ps | awk '{ print $1 }' | tail -n+2" ]
+if [ -z "$(docker ps | awk '{ print $1 }' | tail -n+2)" ]
 then
       :
 else
@@ -13,7 +13,7 @@ fi
 
 # Check and remove relevant images if needed
 
-if [ -z "docker images | awk '{ print $3 }' | tail -n+2" ]
+if [ -z "$(docker images | awk '{ print $3 }' | tail -n+2)" ]
 then
       :
 else
