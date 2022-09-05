@@ -80,7 +80,7 @@ cd ~ && wget https://dlcdn.apache.org//ant/binaries/apache-ant-1.9.16-bin.zip &&
 
 # Check current shell and configure JAVA if needed
 
-if [ "$(echo $0)" = "/bin/bash" ]; then
+if [ "$(echo $0)" = "bash" ]; then
     if [ -d ~/java1.8-272 ] 
     then
         rm -rf ~/java1.8-272
@@ -100,7 +100,7 @@ if [ "$(echo $0)" = "/bin/bash" ]; then
     fi
 fi
 
-if [ "$(echo $0)" = "/bin/sh" ]; then
+if [ "$(echo $0)" = "sh" ]; then
     if [ -d ~/java1.8-272 ] 
     then
         rm -rf ~/java1.8-272
@@ -120,7 +120,7 @@ if [ "$(echo $0)" = "/bin/sh" ]; then
     fi
 fi
 
-if [ "$(echo $0)" = "/bin/zsh" ]; then
+if [ "$(echo $0)" = "zsh" ]; then
     if [ -d ~/java1.8-272 ] 
     then
         rm -rf ~/java1.8-272
