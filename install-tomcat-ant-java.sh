@@ -15,7 +15,7 @@ if [ "$(echo $0)" = "bash" ] || [ "$(echo $0)" = "/bin/bash" ]; then
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz*
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
-        if [ -z "$(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH")" ] && [ -z "$(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export")" ];
+        if [ -z "$(grep -e ':$JAVA_HOME/bin' ~/.bashrc | grep -w "export" | grep -w "PATH")" ] && [ -z "$(grep -e 'JAVA_HOME=' ~/.bashrc | grep -w "export")" ];
         then 
             echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
         else
@@ -27,7 +27,7 @@ if [ "$(echo $0)" = "bash" ] || [ "$(echo $0)" = "/bin/bash" ]; then
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz* 
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
-        if [ -z "$(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH")" ] && [ -z "$(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export")" ];
+        if [ -z "$(grep -e ':$JAVA_HOME/bin' ~/.bashrc | grep -w "export" | grep -w "PATH")" ] && [ -z "$(grep -e 'JAVA_HOME=' ~/.bashrc | grep -w "export")" ];
         then 
             echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
         else
@@ -37,7 +37,7 @@ if [ "$(echo $0)" = "bash" ] || [ "$(echo $0)" = "/bin/bash" ]; then
     fi
 fi
 
-if [ "$(echo $0)" = "sh" ] || [ "$(echo $0)" = "/bin/bash" ]; then
+if [ "$(echo $0)" = "sh" ] || [ "$(echo $0)" = "/bin/sh" ]; then
     if [ -d ~/java1.8-272 ] 
     then
         rm -rf ~/java1.8-272
@@ -45,7 +45,7 @@ if [ "$(echo $0)" = "sh" ] || [ "$(echo $0)" = "/bin/bash" ]; then
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz*
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272 
-        if [ -z "$(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH")" ] && [ -z "$(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export")" ];
+        if [ -z "$(grep -e ':$JAVA_HOME/bin' ~/.bashrc | grep -w "export" | grep -w "PATH")" ] && [ -z "$(grep -e 'JAVA_HOME=' ~/.bashrc | grep -w "export")" ];
         then 
             echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
         else
@@ -57,7 +57,7 @@ if [ "$(echo $0)" = "sh" ] || [ "$(echo $0)" = "/bin/bash" ]; then
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         rm -rf openlogic-openjdk-8u272-b10-linux-x64.tar.gz*
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
-        if [ -z "$(grep -e ':$JAVA_HOME/bin' ~/.zshrc | grep -w "export" | grep -w "PATH")" ] && [ -z "$(grep -e 'JAVA_HOME=' ~/.zshrc | grep -w "export")" ];
+        if [ -z "$(grep -e ':$JAVA_HOME/bin' ~/.bashrc | grep -w "export" | grep -w "PATH")" ] && [ -z "$(grep -e 'JAVA_HOME=' ~/.bashrc | grep -w "export")" ];
         then 
             echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
         else
