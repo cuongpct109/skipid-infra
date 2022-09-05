@@ -1,16 +1,5 @@
 #!/bin/sh
 
-mkdir ~/Documents/skipid && cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/backend/common.git && git clone https://gitlab.com/ultorex/skipid/backend/kyc-api.git && cd ~/Documents/skipid/kyc-api && ./gradlew build && cd ~/Documents/skipid/kyc-api/build/libs && mv kyc-api-0.0.1-SNAPSHOT.war ~/apache-tomcat-8.0.53/webapps/ && mv ~/apache-tomcat-8.0.53/webapps/kyc-api-0.0.1-SNAPSHOT.war ~/apache-tomcat-8.0.53/webapps/kyc-api.war
-cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/backend/kyc-admin.git && cd ~/Documents/skipid/kyc-admin && ~/apache-ant-1.9.16/bin/ant && cd ~/Documents/skipid/kyc-admin/dist && mv hibtc-back.war ~/apache-tomcat-8.0.53/webapps/
-cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/frontend/skipid.git && cd ~/Documents/skipid/skipid && touch .env && cp ~/Documents/utilities/.env ~/Documents/skipid/skipid/
-yarn install
-~/apache-tomcat-8.0.53/bin/startup.sh
-cd ~/Documents/skipid/skipid && yarn start & 
-rm -rf ~/Downloads/skipid-infra
-
-
-#!/bin/sh
-
 # Check and kill processes that running on 8080 and 3000 if needed
 
 port_3000=$(lsof -i:3000 | awk '{print $2}' | uniq | tail -n+2)
@@ -148,7 +137,8 @@ fi
 
 
 # Clone common and kyc-api source
-mkdir ~/Documents/skipid && cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/backend/common.git && git clone https://gitlab.com/ultorex/skipid/backend/kyc-api.git 
+mkdir ~/Documents/skipid 
+cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/backend/common.git && git clone https://gitlab.com/ultorex/skipid/backend/kyc-api.git 
 
 
 # Build kyc-api with gradlew then move file war into webapps folder of tomcat-8.0.53
@@ -163,14 +153,12 @@ cd ~/Documents/skipid/kyc-admin && ~/apache-ant-1.9.16/bin/ant && cd ~/Documents
 
 # Clone skipid frontend and copy .env (previously add to ~/Documents/utilities folder) to skipid frontend base folder 
 cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/frontend/skipid.git && cd ~/Documents/skipid/skipid && touch .env && cp /home/cuong/Documents/utilities/.env ~/Documents/skipid/skipid/
-cd ~/Documents/skipid/skipid && sed -i s:'https\://staging-api.skipid.io':'http\://localhost\:8080/kyc-api':g .env
 
 # Install skipid frontend with yarn
 yarn install
 
 # Start tomcat server at port 8080
 ~/apache-tomcat-8.0.53/bin/startup.sh
-tail -f ~/apache-tomcat-8.0.53/logs/catalina.out &
 
 # Start skipid frontend server at port 3000
 cd ~/Documents/skipid/skipid 
