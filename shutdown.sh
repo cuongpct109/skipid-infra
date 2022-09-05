@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # Kill processes which using 3000 port
 port_3000=$(lsof -i:3000 | awk '{print $2}' | uniq | tail -n+2)
