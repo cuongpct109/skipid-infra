@@ -9,7 +9,7 @@ then
 else
     for i in $port_3000
     do
-        kill -9 $i > /dev/null 
+        kill -9 $i > /dev/null 2>&1
         echo "killing process (ID=$i) with port 3000"
         echo "==============================="
     done
@@ -24,7 +24,7 @@ then
 else
     for i in $port_8080
     do
-        kill -9 $i > /dev/null 
+        kill -9 $i > /dev/null 2>&1
         echo "killing process (ID=$i) with port 8080"
         echo "==============================="
     done
