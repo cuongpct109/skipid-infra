@@ -129,14 +129,14 @@ if [ "$(echo $0)" = "/bin/zsh" ]; then
         rm openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272 
         echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc 
-        source ~/.bashrc
+        source ~/.zshrc
     else
         cd ~ && wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u272-b10/openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         tar -xvf openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         rm openlogic-openjdk-8u272-b10-linux-x64.tar.gz 
         mv openlogic-openjdk-8u272-b10-linux-x64 java1.8-272
         echo "export JAVA_HOME=~/java1.8-272\nexport PATH=\$PATH:\$JAVA_HOME/bin\n" >> ~/.bashrc
-        source ~/.bashrc
+        source ~/.zshrc
     fi
 fi
 
