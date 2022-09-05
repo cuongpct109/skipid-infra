@@ -1,28 +1,33 @@
 #!/bin/sh
 
-# Check and kill processes that running on 8080 and 3000 if needed
-
+# Kill processes which using 3000 port
 port_3000=$(lsof -i:3000 | awk '{print $2}' | uniq | tail -n+2)
-if [ -z $port_3000 ]
-then 
-    echo "port 3000 is available now"
+if [ -z $port_3000 ]             
+then
+    echo "nothing is running on port 3000"
+    echo "==============================="
 else
-    for i in $port_3000
+    for i in $(echo $port_3000 | sed "s/,/ /g")  
     do
-        kill -9 $i > /dev/null 2>&1
-        echo "port 3000 is available now"
+        kill -9 $i 
+        echo "killing process (ID=$i) with port 3000"
+        echo "==============================="
     done
 fi
 
+
+# Kill processes which using 8080 port
 port_8080=$(lsof -i:8080 | awk '{print $2}' | uniq | tail -n+2)
-if [ -z $port_8080 ]
-then 
-    echo "port 8080 is available now"
+if [ -z $port_8080 ]             
+then
+    echo "nothing is running on port 3000"
+    echo "==============================="
 else
-    for i in $port_8080
+    for i in $(echo $port_8080 | sed "s/,/ /g")  
     do
-        kill -9 $i > /dev/null 2>&1
-        echo "port 8080 is available now"
+        kill -9 $i
+        echo "killing process (ID=$i) with port 8080"
+        echo "==============================="
     done
 fi
 
