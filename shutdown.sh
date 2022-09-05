@@ -75,25 +75,25 @@ removeContainer $(getContainerID mongo 27017)
 # getImageID <REPOSITORY-NAME> <TAG>. Ex: getImageID redis latest
 # removeImage <IMAGE-ID>. Ex: removeImage $(getImageID redis latest)
 
-#getImageID () {
-#      docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 | 
-#                if [ -z "$2" ]
-#                then awk '{ print $1 }'
-#                else grep -w "$2" | awk '{ print $1 }'
-#                fi
-#}
+getImageID () {
+      docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 | 
+                if [ -z "$2" ]
+                then awk '{ print $1 }'
+                else grep -w "$2" | awk '{ print $1 }'
+                fi
+}
 
-#removeImage () {                                                             
-#      export imageID=$1
-#      if [ -z "$imageID" ]
-#      then
-#            :
-#      else
-#            sudo docker rmi "$imageID"
-#      fi
-#}
+removeImage () {                                                             
+      export imageID=$1
+      if [ -z "$imageID" ]
+      then
+            :
+      else
+            sudo docker rmi "$imageID"
+      fi
+}
 
-#removeImage $(getImageID redis latest)                                     
-#removeImage $(getImageID mysql 5.7)
-#removeImage $(getImageID mongo 4.4)
+removeImage $(getImageID redis latest)                                     
+removeImage $(getImageID mysql 5.7)
+removeImage $(getImageID mongo 4.4)
 
