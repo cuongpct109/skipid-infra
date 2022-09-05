@@ -160,9 +160,12 @@ yarn install && yarn build
 
 # Start tomcat server at port 8080
 ~/apache-tomcat-8.0.53/bin/startup.sh
+tail -f ~/apache-tomcat-8.0.53/logs/catalina.out
 
 # Start skipid frontend server at port 3000
-cd ~/Documents/skipid/skipid && yarn start 
+cd ~/Documents/skipid/skipid 
+yarn build
+yarn start > /dev/null 2>&1 & 
 
 # Remove .env file in the utilities folder
 rm -rf ~/Documents/utilities/.env
