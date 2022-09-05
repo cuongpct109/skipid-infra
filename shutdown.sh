@@ -186,3 +186,12 @@ then
 else 
     :
 fi
+
+
+if [ -f ~/Downloads/cookies.txt ]
+then
+    rm ~/Downloads/cookies.txt
+    echo "~/Downloads/cookies.txt removed"
+else 
+    :
+fi
