@@ -30,51 +30,69 @@ else
     done
 fi
 
-# kill mysql containers 
-mysql=$(sudo docker ps | grep "mysql" | awk '{ print $1 }' | uniq)
+# Check and remove relevant containers if needed
+# getContainerID <CONTAINER-NAME> <PORT>. Ex: getContainerID redis 6379
+# removeContainer <CONTAINER-ID>. Ex: removeContainer $(getContainerID redis 6379)
 
-if [ -z "$mysql" ]
-then
-    echo "mysql container is not running"
-    echo "==============================="
-else
-    for i in $mysql
-    do
-        
-        sudo docker stop $i > /dev/null
-        echo "mysql container with ID = $i has stopped"
-        echo "==============================="
-    done
-fi
+getContainerID () {
+      if [ -z $( docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a| tail -n+2 | grep $1 | 
+                if [ -z "$2" ]
+                then awk '{ print $1 }'
+                else grep -w "$2" | awk '{ print $1 }'
+                fi
+                ) ]
+      then 
+            docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a| tail -n+2 | grep $1 | 
+                if [ -z "$2" ]
+                then awk '{ print $1 }'
+                else grep -w "$2" | awk '{ print $1 }'
+                fi
+      else 
+            docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a| tail -n+2 | grep $1 |  awk '{ print $1 }'
+    fi
+}
 
-# kill mongodb containers
-mongo=$(sudo docker ps | grep "mongo" | awk '{ print $1 }' | uniq)
 
-if [ -z "$mongo" ]
-then
-    echo "mongo container is not running"
-    echo "==============================="
-else
-    for i in $mongo
-    do
-        sudo docker stop $i > /dev/null 
-        echo "mongo container with ID = $i has stopped"
-        echo "==============================="
-    done
-fi
+removeContainer () {                                                             
+      export containerID=$1
+      if [ -z "$containerID" ]
+      then
+            :
+      else
+            sudo docker stop "$containerID"
+            sudo docker rm "$containerID"
+      fi
+}
 
-# kill redis containers
-redis=$(sudo docker ps | grep "redis" | awk '{ print $1 }' | uniq)
+removeContainer $(getContainerID redis 6379)                                     
+removeContainer $(getContainerID mysql 3306)
+removeContainer $(getContainerID mongo 27017)
 
-if [ -z "$redis" ]
-then
-    echo "redis container is not running"
-    echo "==============================="
-else
-    for i in $redis
-    do
-        sudo docker stop $i > /dev/null 
-        echo "redis container with ID = $i has stopped"
-        echo "==============================="
-    done
-fi
+
+
+# Check and remove relevant images if needed
+# getImageID <REPOSITORY-NAME> <TAG>. Ex: getImageID redis latest
+# removeImage <IMAGE-ID>. Ex: removeImage $(getImageID redis latest)
+
+getImageID () {
+      docker image list --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"| tail -n+2 | grep $1 | 
+                if [ -z "$2" ]
+                then awk '{ print $1 }'
+                else grep -w "$2" | awk '{ print $1 }'
+                fi
+}
+
+removeImage () {                                                             
+      export imageID=$1
+      if [ -z "$imageID" ]
+      then
+            :
+      else
+            sudo docker rmi "$imageID"
+      fi
+}
+
+removeImage $(getImageID redis latest)                                     
+removeImage $(getImageID mysql 5.7)
+removeImage $(getImageID mongo 4.4)
+
