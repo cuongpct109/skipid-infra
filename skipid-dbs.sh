@@ -6,8 +6,9 @@ if [ -z "docker ps | awk '{ print $1 }' | tail -n+2" ]
 then
       :
 else
-      docker rm $(docker ps | awk '{ print $1 }' | tail -n+2) 
-      echo "These docker containers above have been stopped"
+      docker stop $(docker ps | awk '{ print $1 }' | tail -n+2) 
+      docker rm  $(docker ps -q -a)
+      echo "These docker containers above have been stopped and removed"
 fi
 
 # Check and remove relevant images if needed
