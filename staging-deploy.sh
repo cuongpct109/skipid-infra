@@ -20,7 +20,7 @@ fi
 port_8080=$(lsof -i:8080 | awk '{print $2}' | uniq | tail -n+2)
 if [ -z $port_8080 ]             
 then
-    echo "nothing is running on port 3000"
+    echo "nothing is running on port 8080"
     echo "==============================="
 else
     for i in $(echo $port_8080 | sed "s/,/ /g")  
