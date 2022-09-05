@@ -167,7 +167,8 @@ yarn install
 # Start skipid frontend server at port 3000
 cd ~/Documents/skipid/skipid 
 yarn build
-yarn start > /dev/null 2>&1 &
+yarn global add serve
+serve -s build &
 
 # Remove .env file in the utilities folder
 rm -rf ~/Documents/utilities/.env
