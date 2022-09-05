@@ -157,7 +157,7 @@ cd ~/Downloads && tar -xvf datastack.tar.gz && git clone https://gitlab.com/ulto
 
 docker-compose -f ~/Documents/dbs/docker-compose.yml up > ~/Documents/dbs/docker.log 2>&1 &
 
-tail -f ~/Documents/dbs/docker.log
+tail -f ~/Documents/dbs/docker.log &
 
 # Cleaning up
 
