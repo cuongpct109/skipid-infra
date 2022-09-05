@@ -1,6 +1,30 @@
 #!/bin/sh
 
-# check and remove existing old folders
+# Check and remove all running containers if needed 
+
+if [ -z "docker ps | awk '{ print $1 }' | tail -n+2" ]
+then
+      :
+else
+      docker rm $(docker ps | awk '{ print $1 }' | tail -n+2) 
+      echo "These docker containers above have been stopped"
+fi
+
+# Check and remove relevant images if needed
+
+if [ -z "docker images | awk '{ print $3 }' | tail -n+2" ]
+then
+      :
+else
+      docker rmi $(docker images | awk '{ print $3 }' | tail -n+2) 
+      echo "These docker images above have been stopped"
+fi
+
+
+
+
+# Check and remove existing old folders if needed
+
 if [ -d ~/Documents/dbs ] 
 then
     rm -rf ~/Documents/dbs
@@ -27,10 +51,11 @@ else
 fi
 
 
-# update and install necessary apps
+# Update
+
 sudo apt update;
 
-# check and install wget and curl
+# Check and install wget and curl if needed
 
 if [ -z "$(dpkg -l | grep -E '^ii' | grep wget)" ]
 then
@@ -45,6 +70,8 @@ then
 else
       echo "curl've already installed in this computer"
 fi
+
+# Check and install docker, docker-compose, containerd if needed
 
 if [ -z "$(dpkg -l | grep -E '^ii' | grep docker)" ]
 then
@@ -76,15 +103,17 @@ else
       echo "containerd.service've already running in this computer"
 fi
 
-# download datastack from https://drive.google.com/drive/u/0/folders/17i0jINA19m9PZ1u292Tht5lm5sZIWhcm, if the file change, just need to replace different file'ID
+# Download datastack from https://drive.google.com/drive/u/0/folders/17i0jINA19m9PZ1u292Tht5lm5sZIWhcm
 wget --load-cookies ~/Downloads/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies ~/Downloads/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1tJJiMOaYtmzSskWq1EGgCOmR6J3VZFqs' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1tJJiMOaYtmzSskWq1EGgCOmR6J3VZFqs" -O ~/Downloads/datastack.tar.gz && rm ~/Downloads/cookies.txt
 
-# unzip datastack.tar.gz
+# Unzip datastack.tar.gz
 cd ~/Downloads && tar -xvf datastack.tar.gz && git clone https://gitlab.com/ultorex/skipid/backend/dbs.git ~/Documents/dbs && rsync -a ~/Downloads/DataStack/ ~/Documents/dbs/
 
-# run docker-compose and save logs to ~/Documents/dbs/docker.log
+# Run docker-compose and save logs to ~/Documents/dbs/docker.log
 
 docker-compose -f ~/Documents/dbs/docker-compose.yml up > ~/Documents/dbs/docker.log 2>&1 &
+
+# Cleaning up
 
 sudo apt autoremove; 
 rm -rf ~/Downloads/DataStack ~/Downloads/datastack.tar.gz 
