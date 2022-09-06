@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Create .env file in ~/Documents/utilities/ folder
 
