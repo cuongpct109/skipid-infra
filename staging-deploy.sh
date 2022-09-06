@@ -40,8 +40,10 @@ cd ~/Documents/skipid && git clone https://gitlab.com/ultorex/skipid/frontend/sk
 
 # Install skipid frontend with yarn
 
+sudo chmod -R 777 ~/Documents/skipid/skipid/node_modules
+cd ~/Documents/skipid/skipid
 yarn install
-sudo yarn global add serve
+yarn global add serve
 
 # Start tomcat server at port 8080
 
