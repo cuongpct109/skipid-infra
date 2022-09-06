@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Download apache-tomcat-8.0.53 and apache-ant-1.9.16
 
