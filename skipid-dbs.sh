@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # shutdown and removing necessary data
 
