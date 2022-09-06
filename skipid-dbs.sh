@@ -2,7 +2,7 @@
 
 # shutdown and removing necessary data
 
-eval "$(curl https://raw.githubusercontent.com/cuongpct109/skipid-infra/main/shutdown.sh)"
+sudo eval "$(curl https://raw.githubusercontent.com/cuongpct109/skipid-infra/main/shutdown.sh)"
 
 # Check and remove existing old folders if needed
 
