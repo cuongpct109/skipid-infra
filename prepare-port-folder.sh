@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Kill processes which using 3000 port
 
