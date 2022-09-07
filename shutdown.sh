@@ -89,7 +89,7 @@ removeImage () {
       then
             :
       else
-            sudo docker rmi "$imageID"
+            sudo docker rmi -f "$imageID"
       fi
 }
 
