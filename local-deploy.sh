@@ -14,7 +14,7 @@ sudo apt update;
 
 # Installing apache-tomcat-8.0.53, apache-ant-1.9.16 and java1.8-272
 
-eval "$(curl https://raw.githubusercontent.com/cuongpct109/skipid-infra/main/install-tomcat-ant-java.sh)"
+curl https://raw.githubusercontent.com/cuongpct109/skipid-infra/main/install-tomcat-ant-java.sh | sh -
 
 # Clone common and kyc-api source
 
