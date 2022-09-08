@@ -46,9 +46,9 @@ cd ~/Documents/skipid/skipid && sed -i s:'https\://staging-api.skipid.io':'http\
 
 # Install skipid frontend with yarn
 
-sudo chmod -R 777 ~/Documents/skipid/skipid/node_modules
 cd ~/Documents/skipid/skipid
 yarn install
+sudo chmod -R 777 ~/Documents/skipid/skipid/node_modules
 yarn global add serve
 
 # Start tomcat server at port 8080
